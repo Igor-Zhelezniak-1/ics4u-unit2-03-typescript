@@ -14,24 +14,27 @@ const prompt = promptSync()
 const stack = new MrCoxallStack()
 
 // Input & Process
-while (true) {
-  const uInput = prompt('Enter a number (! to exit): ')
-
-  if (uInput === '!') {
-    break
-  } else {
-    const number = parseInt(uInput)
-    if (isNaN(number)) {
-      console.log(`${uInput} is not a number`)
+function stackTemp(): number[] {
+  while (true) {
+    const uInput = prompt('Enter a number (! to exit): ')
+    if (uInput === '!') {
+      break
     } else {
-      stack.Push(number)
+      const number = parseInt(uInput)
+      if (isNaN(number)) {
+        console.log(`${uInput} is not a number`)
+      } else {
+        stack.Push(number)
+      }
     }
   }
+  let tempStack = stack.getStack()
+  return tempStack
 }
-
+let tempStack = stackTemp()
 console.log('')
-console.log(stack.getStack())
+console.log(tempStack)
 const exitValue = stack.exitNumber()
-console.log(`Exited: ${exitValue} out of stack`)
+console.log(`Excited: ${exitValue} out of stack`)
 
 console.log('\nDone.')
